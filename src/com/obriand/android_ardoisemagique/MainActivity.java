@@ -33,8 +33,10 @@ public class MainActivity extends Activity {
 	private SingleTouchEventView drawView;
 	
 	// Buttons to draw
-	private Button btHorizontal;
-	private Button btVertical;
+	private Button btLeft;
+	private Button btRight;
+	private Button btUp;
+	private Button btDown;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +46,49 @@ public class MainActivity extends Activity {
 		// Draw view zone
 		drawView = (SingleTouchEventView) this.findViewById(R.id.draw_view); 
 		
-		// TODO left and right direction
-		btHorizontal = (Button) this.findViewById(R.id.mainactivity_right_bt);
-		btHorizontal.setOnTouchListener(new OnTouchListener() {
+		// Right direction
+		btLeft = (Button) this.findViewById(R.id.mainactivity_left_bt);
+		btLeft.setOnTouchListener(new OnTouchListener() {
 
 			@Override
 			public boolean onTouch(View view, MotionEvent event) { 
 				
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					Log.i(TAG, "onTouch horizontal: ACTION_DOWN => start draw");
+					Log.i(TAG, "onTouch left: ACTION_DOWN => start draw");
+					drawView.drawLeft(DRAW_STEP);
+					// when the user touch down, we can start the draw with an Handler using a recurrent action done with a Runnable
+		            if (mHandler != null) return true;
+		            mHandler = new Handler();
+		            mHandler.postDelayed(mAction, REPEAT_DELAY);
+				}
+				if (event.getAction() == MotionEvent.ACTION_UP) {
+					Log.i(TAG, "onTouch left: ACTION_UP => stop draw");
+					// when the user touch down, we can stop the draw removing the callbacks of the Handler
+		            if (mHandler == null) return true;
+		            mHandler.removeCallbacks(mAction);
+		            mHandler = null;
+				}
+				return false;
+			}
+			
+		    Runnable mAction = new Runnable() {
+		        @Override public void run() {
+		        	drawView.drawLeft(DRAW_STEP);
+		            mHandler.postDelayed(this, REPEAT_DELAY);
+		        }
+		    };
+			
+		   });
+		
+		// Right direction
+		btRight = (Button) this.findViewById(R.id.mainactivity_right_bt);
+		btRight.setOnTouchListener(new OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View view, MotionEvent event) { 
+				
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					Log.i(TAG, "onTouch right: ACTION_DOWN => start draw");
 					drawView.drawRight(DRAW_STEP);
 					// when the user touch down, we can start the draw with an Handler using a recurrent action done with a Runnable
 		            if (mHandler != null) return true;
@@ -60,7 +96,7 @@ public class MainActivity extends Activity {
 		            mHandler.postDelayed(mAction, REPEAT_DELAY);
 				}
 				if (event.getAction() == MotionEvent.ACTION_UP) {
-					Log.i(TAG, "onTouch horizontal: ACTION_UP => stop draw");
+					Log.i(TAG, "onTouch right: ACTION_UP => stop draw");
 					// when the user touch down, we can stop the draw removing the callbacks of the Handler
 		            if (mHandler == null) return true;
 		            mHandler.removeCallbacks(mAction);
@@ -78,15 +114,49 @@ public class MainActivity extends Activity {
 			
 		   });
 		
-		// TODO up and down direction
-		btVertical = (Button) this.findViewById(R.id.mainactivity_down_bt);
-		btVertical.setOnTouchListener(new OnTouchListener() {
+		// Up direction
+		btUp = (Button) this.findViewById(R.id.mainactivity_up_bt);
+		btUp.setOnTouchListener(new OnTouchListener() {
 
 			@Override
 			public boolean onTouch(View view, MotionEvent event) {
 
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					Log.i(TAG, "onTouch vertical: ACTION_DOWN => start draw");
+					Log.i(TAG, "onTouch up: ACTION_DOWN => start draw");
+					drawView.drawUp(DRAW_STEP);
+					// TODO the user touch down, we can start the draw
+		            if (mHandler != null) return true;
+		            mHandler = new Handler();
+		            mHandler.postDelayed(mAction, REPEAT_DELAY);
+				}
+				if (event.getAction() == MotionEvent.ACTION_UP) {
+					Log.i(TAG, "onTouch up: ACTION_UP => stop draw");
+					// TODO the user touch the button here, we stop the draw
+		            if (mHandler == null) return true;
+		            mHandler.removeCallbacks(mAction);
+		            mHandler = null;
+				}
+				return false;
+			}
+			
+		    Runnable mAction = new Runnable() {
+		        @Override public void run() {
+		        	drawView.drawUp(DRAW_STEP);
+		            mHandler.postDelayed(this, REPEAT_DELAY);
+		        }
+		    };
+			
+		   });
+		
+		// Down direction
+		btDown = (Button) this.findViewById(R.id.mainactivity_down_bt);
+		btDown.setOnTouchListener(new OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View view, MotionEvent event) {
+
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					Log.i(TAG, "onTouch down: ACTION_DOWN => start draw");
 					drawView.drawDown(DRAW_STEP);
 					// TODO the user touch down, we can start the draw
 		            if (mHandler != null) return true;
@@ -94,7 +164,7 @@ public class MainActivity extends Activity {
 		            mHandler.postDelayed(mAction, REPEAT_DELAY);
 				}
 				if (event.getAction() == MotionEvent.ACTION_UP) {
-					Log.i(TAG, "onTouch vertical: ACTION_UP => stop draw");
+					Log.i(TAG, "onTouch down: ACTION_UP => stop draw");
 					// TODO the user touch the button here, we stop the draw
 		            if (mHandler == null) return true;
 		            mHandler.removeCallbacks(mAction);

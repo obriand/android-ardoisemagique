@@ -42,6 +42,18 @@ public class SingleTouchEventView extends View {
 	protected void onDraw(Canvas canvas) {
 		canvas.drawPath(path, paint);
 	}
+	
+	public boolean drawLeft(float x) {
+		Log.i(TAG, "drawLeft:from:" + cursorX + "," + cursorY);
+		// Change the x position of the cursor
+		cursorX = cursorX - x;
+		// Draw a line and move the cursor
+		path.lineTo(cursorX, cursorY);
+		Log.i(TAG, "drawLeft:to:" + cursorX + "," + cursorY);
+		// Schedules a repaint.
+		invalidate();
+		return true;
+	}
 
 	public boolean drawRight(float x) {
 		Log.i(TAG, "drawRight:from:" + cursorX + "," + cursorY);
@@ -51,6 +63,18 @@ public class SingleTouchEventView extends View {
 		path.lineTo(cursorX, cursorY);
 		Log.i(TAG, "drawRight:to:" + cursorX + "," + cursorY);
 		// Schedules a repaint.
+		invalidate();
+		return true;
+	}
+	
+	public boolean drawUp(float y) {
+		Log.i(TAG, "drawUp:from:" + cursorX + "," + cursorY);
+		// Change the y position of the cursor
+		cursorY = cursorY - y;
+		// Draw a line and move the cursor
+		path.lineTo(cursorX, cursorY);
+		Log.i(TAG, "drawDown:to:" + cursorX + "," + cursorY);
+		// Schedules a repaint, call onDraw()
 		invalidate();
 		return true;
 	}
