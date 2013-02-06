@@ -3,6 +3,7 @@
 
     <string name="app_name">android-ardoisemagique</string>
     <string name="hello_world">Hello world!</string>
+    <string name="mainactivity_tortue_iv">Hello world!</string>
     <string name="menu_settings">Settings</string>
 	<string name="mainactivity_right_bt">Right</string>
 	<string name="mainactivity_left_bt">Left</string>

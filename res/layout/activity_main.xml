@@ -8,7 +8,7 @@
         android:id="@+id/draw_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        class="com.obriand.android_ardoisemagique.SingleTouchEventView"/>
+        class="com.obriand.android_ardoisemagique.SingleTouchEventView" />
 
     <TextView
         android:id="@+id/mainactivity_hello_bt"
@@ -19,40 +19,47 @@
         android:text="@string/hello_world"
         android:color="#000000" />
 
+    <ImageView
+        android:id="@+id/mainactivity_tortue_iv"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:contentDescription="@string/mainactivity_tortue_iv"
+        android:src="@drawable/tortue" />
+
     <Button
         android:id="@+id/mainactivity_right_bt"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/mainactivity_left_bt"
-        android:text="@string/mainactivity_right_bt"
-        android:background="@drawable/right_button" />
-    
+        android:background="@drawable/right_button"
+        android:text="@string/mainactivity_right_bt" />
+
     <Button
         android:id="@+id/mainactivity_left_bt"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:text="@string/mainactivity_left_bt"
-        android:background="@drawable/left_button" />
+        android:background="@drawable/left_button"
+        android:text="@string/mainactivity_left_bt" />
 
     <Button
         android:id="@+id/mainactivity_up_bt"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignParentRight="true"
         android:layout_above="@+id/mainactivity_down_bt"
-        android:text="@string/mainactivity_up_bt"
-        android:background="@drawable/up_button"  />
-    
-     <Button
+        android:layout_alignParentRight="true"
+        android:background="@drawable/up_button"
+        android:text="@string/mainactivity_up_bt" />
+
+    <Button
         android:id="@+id/mainactivity_down_bt"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="@string/mainactivity_down_bt"
-        android:background="@drawable/down_button" />
+        android:background="@drawable/down_button"
+        android:text="@string/mainactivity_down_bt" />
 
 </RelativeLayout>

@@ -11,16 +11,24 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class MainActivity extends Activity {
 	
 	public final static String TAG = "com.obriand.android_ardoisemagique.MainActivity";
+	
+	// Current position
+	private float currentXPos = 60;
+	private float currentYPos = 60;
 	
 	// Draw step
 	private final static float DRAW_STEP = 10;
 	
 	// Repeat delay in ms
 	private final static int REPEAT_DELAY = 250;
+	
+	// Cursor imageView
+	private ImageView ivCursor;
 	
 	// Local handler
 	private Handler mHandler;
@@ -46,8 +54,13 @@ public class MainActivity extends Activity {
 		// Draw view zone
 		drawView = (SingleTouchEventView) this.findViewById(R.id.draw_view); 
 		
+		// Set the imageView cursor
+		ivCursor = (ImageView) findViewById(R.id.mainactivity_tortue_iv);
+		ivCursor.setX(currentXPos);
+		ivCursor.setY(currentYPos);
+		
 		// Right direction
-		btLeft = (Button) this.findViewById(R.id.mainactivity_left_bt);
+		btLeft = (Button) findViewById(R.id.mainactivity_left_bt);
 		btLeft.setOnTouchListener(new OnTouchListener() {
 
 			@Override
@@ -55,7 +68,10 @@ public class MainActivity extends Activity {
 				
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					Log.i(TAG, "onTouch left: ACTION_DOWN => start draw");
-					drawView.drawLeft(DRAW_STEP);
+					drawView.drawLeft(DRAW_STEP);					
+					currentXPos = currentXPos-DRAW_STEP;
+					Log.i(TAG, "currentXPos:"+currentXPos);
+					ivCursor.setX(currentXPos);
 					// when the user touch down, we can start the draw with an Handler using a recurrent action done with a Runnable
 		            if (mHandler != null) return true;
 		            mHandler = new Handler();
@@ -74,6 +90,9 @@ public class MainActivity extends Activity {
 		    Runnable mAction = new Runnable() {
 		        @Override public void run() {
 		        	drawView.drawLeft(DRAW_STEP);
+					currentXPos = currentXPos-DRAW_STEP;
+					Log.i(TAG, "currentXPos:"+currentXPos);
+					ivCursor.setX(currentXPos);
 		            mHandler.postDelayed(this, REPEAT_DELAY);
 		        }
 		    };
@@ -81,7 +100,7 @@ public class MainActivity extends Activity {
 		   });
 		
 		// Right direction
-		btRight = (Button) this.findViewById(R.id.mainactivity_right_bt);
+		btRight = (Button) findViewById(R.id.mainactivity_right_bt);
 		btRight.setOnTouchListener(new OnTouchListener() {
 
 			@Override
@@ -90,6 +109,9 @@ public class MainActivity extends Activity {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					Log.i(TAG, "onTouch right: ACTION_DOWN => start draw");
 					drawView.drawRight(DRAW_STEP);
+					currentXPos = currentXPos+DRAW_STEP;
+					Log.i(TAG, "currentXPos:"+currentXPos);
+					ivCursor.setX(currentXPos);
 					// when the user touch down, we can start the draw with an Handler using a recurrent action done with a Runnable
 		            if (mHandler != null) return true;
 		            mHandler = new Handler();
@@ -108,6 +130,9 @@ public class MainActivity extends Activity {
 		    Runnable mAction = new Runnable() {
 		        @Override public void run() {
 		        	drawView.drawRight(DRAW_STEP);
+					currentXPos = currentXPos+DRAW_STEP;
+					Log.i(TAG, "currentXPos:"+currentXPos);
+					ivCursor.setX(currentXPos);
 		            mHandler.postDelayed(this, REPEAT_DELAY);
 		        }
 		    };
@@ -115,7 +140,7 @@ public class MainActivity extends Activity {
 		   });
 		
 		// Up direction
-		btUp = (Button) this.findViewById(R.id.mainactivity_up_bt);
+		btUp = (Button) findViewById(R.id.mainactivity_up_bt);
 		btUp.setOnTouchListener(new OnTouchListener() {
 
 			@Override
@@ -124,6 +149,9 @@ public class MainActivity extends Activity {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					Log.i(TAG, "onTouch up: ACTION_DOWN => start draw");
 					drawView.drawUp(DRAW_STEP);
+					currentYPos = currentYPos-DRAW_STEP;
+					Log.i(TAG, "currentYPos:"+currentYPos);
+					ivCursor.setY(currentYPos);
 					// TODO the user touch down, we can start the draw
 		            if (mHandler != null) return true;
 		            mHandler = new Handler();
@@ -142,6 +170,9 @@ public class MainActivity extends Activity {
 		    Runnable mAction = new Runnable() {
 		        @Override public void run() {
 		        	drawView.drawUp(DRAW_STEP);
+					currentYPos = currentYPos-DRAW_STEP;
+					Log.i(TAG, "currentYPos:"+currentYPos);
+					ivCursor.setY(currentYPos);
 		            mHandler.postDelayed(this, REPEAT_DELAY);
 		        }
 		    };
@@ -149,7 +180,7 @@ public class MainActivity extends Activity {
 		   });
 		
 		// Down direction
-		btDown = (Button) this.findViewById(R.id.mainactivity_down_bt);
+		btDown = (Button) findViewById(R.id.mainactivity_down_bt);
 		btDown.setOnTouchListener(new OnTouchListener() {
 
 			@Override
@@ -158,6 +189,9 @@ public class MainActivity extends Activity {
 				if (event.getAction() == MotionEvent.ACTION_DOWN) {
 					Log.i(TAG, "onTouch down: ACTION_DOWN => start draw");
 					drawView.drawDown(DRAW_STEP);
+					currentYPos = currentYPos+DRAW_STEP;
+					Log.i(TAG, "currentYPos:"+currentYPos);
+					ivCursor.setY(currentYPos);
 					// TODO the user touch down, we can start the draw
 		            if (mHandler != null) return true;
 		            mHandler = new Handler();
@@ -176,12 +210,25 @@ public class MainActivity extends Activity {
 		    Runnable mAction = new Runnable() {
 		        @Override public void run() {
 		        	drawView.drawDown(DRAW_STEP);
+					currentYPos = currentYPos+DRAW_STEP;
+					Log.i(TAG, "currentYPos:"+currentYPos);
+					ivCursor.setY(currentYPos);
 		            mHandler.postDelayed(this, REPEAT_DELAY);
 		        }
 		    };
 			
 		   });
 		
+	}
+	
+	public void setCurrentPosition(float XPos, float YPos) {
+		currentXPos = XPos;
+		currentYPos = YPos;
+	}
+	
+	public float[] getCurrentPosition(float XPos, float YPos) {
+		float[] pos = {currentXPos, currentYPos};
+		return pos;
 	}
 
 	@Override

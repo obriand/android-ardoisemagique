@@ -7,8 +7,8 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 
 public class SingleTouchEventView extends View {
 
@@ -18,9 +18,12 @@ public class SingleTouchEventView extends View {
 	private Paint paint = new Paint();
 	private Path path = new Path();
 
-	// Mouse position
+	// Cursor default position
 	private float cursorX = 100;
 	private float cursorY = 100;
+	
+	// Cursor imageView
+	private ImageView ivCursor;
 
 	// Constructor
 	public SingleTouchEventView(Context context, AttributeSet attrs) {
