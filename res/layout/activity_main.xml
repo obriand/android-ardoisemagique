@@ -41,7 +41,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_above="@+id/mainactivity_down_bt"
-        android:text="@string/mainactivity_up_bt" />
+        android:text="@string/mainactivity_up_bt"
+        android:background="@drawable/up_button"  />
     
      <Button
         android:id="@+id/mainactivity_down_bt"
