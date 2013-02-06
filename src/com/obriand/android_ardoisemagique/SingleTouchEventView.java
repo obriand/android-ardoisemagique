@@ -26,12 +26,14 @@ public class SingleTouchEventView extends View {
 	public SingleTouchEventView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
+		// Set the drawing tools
 		paint.setAntiAlias(true);
 		paint.setStrokeWidth(6f);
 		paint.setColor(Color.BLACK);
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setStrokeJoin(Paint.Join.ROUND);
 		
+		// Set the cursor to the initial position
 		path.moveTo(cursorX, cursorY);
 
 	}
@@ -41,51 +43,28 @@ public class SingleTouchEventView extends View {
 		canvas.drawPath(path, paint);
 	}
 
-	public boolean drawHori(float x) {
-		Log.i(TAG, "drawHori:from:" + cursorX + "," + cursorY);
+	public boolean drawRight(float x) {
+		Log.i(TAG, "drawRight:from:" + cursorX + "," + cursorY);
 		// Change the x position of the cursor
 		cursorX = cursorX + x;
 		// Draw a line and move the cursor
 		path.lineTo(cursorX, cursorY);
-		Log.i(TAG, "drawHori:to:" + cursorX + "," + cursorY);
+		Log.i(TAG, "drawRight:to:" + cursorX + "," + cursorY);
 		// Schedules a repaint.
 		invalidate();
 		return true;
 	}
 	
-	public boolean drawVert(float y) {
-		Log.i(TAG, "drawVert:from:" + cursorX + "," + cursorY);
+	public boolean drawDown(float y) {
+		Log.i(TAG, "drawDown:from:" + cursorX + "," + cursorY);
 		// Change the y position of the cursor
 		cursorY = cursorY + y;
 		// Draw a line and move the cursor
 		path.lineTo(cursorX, cursorY);
-		Log.i(TAG, "drawVert:to:" + cursorX + "," + cursorY);
-		// Schedules a repaint.
+		Log.i(TAG, "drawDown:to:" + cursorX + "," + cursorY);
+		// Schedules a repaint, call onDraw()
 		invalidate();
 		return true;
 	}
-
-//	@Override
-//	public boolean onTouchEvent(MotionEvent event) {
-//		float eventX = event.getX();
-//		float eventY = event.getY();
-//
-//		switch (event.getAction()) {
-//		case MotionEvent.ACTION_DOWN:
-//			path.moveTo(eventX, eventY);
-//			return true;
-//		case MotionEvent.ACTION_MOVE:
-//			path.lineTo(eventX, eventY);
-//			break;
-//		case MotionEvent.ACTION_UP:
-//			// nothing to do
-//			break;
-//		default:
-//			return false;
-//		}
-//
-//		// Schedules a repaint.
-//		invalidate();
-//		return true;
-//	}
+	
 }

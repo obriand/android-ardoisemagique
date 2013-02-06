@@ -8,8 +8,7 @@
         android:id="@+id/draw_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        class="com.obriand.android_ardoisemagique.SingleTouchEventView"
-        android:background="#00FFFF" />
+        class="com.obriand.android_ardoisemagique.SingleTouchEventView"/>
 
     <TextView
         android:id="@+id/mainactivity_hello_bt"
@@ -21,21 +20,35 @@
         android:color="#000000" />
 
     <Button
-        android:id="@+id/mainactivity_horizontal_bt"
+        android:id="@+id/mainactivity_right_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/mainactivity_left_bt"
+        android:text="@string/mainactivity_right_bt" />
+    
+    <Button
+        android:id="@+id/mainactivity_left_bt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:onClick="btHorizontal"
-        android:text="@string/mainactivity_horizontal_bt" />
+        android:text="@string/mainactivity_left_bt" />
 
     <Button
-        android:id="@+id/mainactivity_vertical_bt"
+        android:id="@+id/mainactivity_up_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_above="@+id/mainactivity_down_bt"
+        android:text="@string/mainactivity_up_bt" />
+    
+     <Button
+        android:id="@+id/mainactivity_down_bt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:onClick="btVertical"
-        android:text="@string/mainactivity_vertical_bt" />
+        android:text="@string/mainactivity_down_bt" />
 
 </RelativeLayout>

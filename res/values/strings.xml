@@ -4,6 +4,8 @@
     <string name="app_name">android-ardoisemagique</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-	<string name="mainactivity_horizontal_bt">Horizontal</string>
-	<string name="mainactivity_vertical_bt">Vertical</string>
+	<string name="mainactivity_right_bt">Right</string>
+	<string name="mainactivity_left_bt">Left</string>
+	<string name="mainactivity_down_bt">Down</string>
+	<string name="mainactivity_up_bt">Up</string>
 </resources>
