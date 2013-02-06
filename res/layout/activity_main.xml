@@ -21,24 +21,26 @@
 
     <Button
         android:id="@+id/mainactivity_right_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/mainactivity_left_bt"
-        android:text="@string/mainactivity_right_bt" />
+        android:text="@string/mainactivity_right_bt"
+        android:background="@drawable/right_button" />
     
     <Button
         android:id="@+id/mainactivity_left_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:text="@string/mainactivity_left_bt" />
+        android:text="@string/mainactivity_left_bt"
+        android:background="@drawable/left_button" />
 
     <Button
         android:id="@+id/mainactivity_up_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_alignParentRight="true"
         android:layout_above="@+id/mainactivity_down_bt"
         android:text="@string/mainactivity_up_bt"
@@ -46,10 +48,11 @@
     
      <Button
         android:id="@+id/mainactivity_down_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="@string/mainactivity_down_bt" />
+        android:text="@string/mainactivity_down_bt"
+        android:background="@drawable/down_button" />
 
 </RelativeLayout>
